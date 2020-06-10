@@ -7,7 +7,18 @@ def is_odd(a_number):
 
     Look into modulo division using the '%' operator as one way of doing this.
     """
-    return None
+    if a_number%2 == 1:
+        return True
+    elif a_number%2 == 0:
+        return False
+    else:
+        return None
+
+
+    #if a_number is is_odd:
+    #    return True
+    #else:
+    #    return False
 
 
 def fix_it(moves=True, should_move=True):
@@ -25,7 +36,17 @@ def fix_it(moves=True, should_move=True):
     Most people write this function with 4 return statements. 
     As an extra challenge, see if you can get that down to three.
     """
-    return None
+    if moves == True:
+        if should_move == True:
+            return "No Problem"
+        else:
+            return "Duct Tape"
+    else:
+        if should_move == True:
+            return "WD-40"
+        else:
+            return "No Problem"
+    
 
 
 def loops_1a():
@@ -35,7 +56,12 @@ def loops_1a():
     return a list of 10 items, each one a string with exacly one star in it.
     E.g.: ['*', '*', '*', '*', '*', '*', '*', '*', '*', '*']
     """
-    return None
+    xlist = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"]
+    
+    for i in xlist:
+        xlist[i] == str("'*'")
+    
+    return xlist[i]
 
 
 def loops_1c(number_of_items=5, symbol="#"):
