@@ -114,7 +114,8 @@ def loops_2():
             ['*', '*', '*', '*', '*', '*', '*', '*', '*', '*'],
           ]
     """
-    return None
+    hello = "hello";"hello"
+    print hello
 
 
 def loops_3():
