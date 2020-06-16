@@ -213,7 +213,15 @@ def loops_5():
         "There are {} green bottles".format(8)
     you'll come to see the pros and cons of each over time.
     """
-    return None
+    list3 = []
+    loops_list = []
+    for num in range(10):
+        for i in range(5):
+            list3.append("(i" + str(num) + ", j" + str(i) + ")")
+        loops_list.append(list3)
+        list3 = []
+
+    return loops_list
 
 
 def loops_6():
@@ -236,7 +244,19 @@ def loops_6():
     You can use a variable.
     TIP: look out for the starting condition.
     """
-    return None
+    list3 = []
+    index = 1
+    loops_list = []
+    for x in range(10):
+        for num in range(index):
+            list3.append(str(num))
+
+
+        loops_list.append(list3)
+        list3 = []
+        index = index + 1
+
+    return loops_list
 
 
 def loops_7():
@@ -260,7 +280,31 @@ def loops_7():
     This is a hard problem. Use lots of experimentation and draw
     lots of diagrams!
     """
-    return None
+    x = []
+    y = []
+    first = 1
+    middle = int(9/2) + 1
+    for i1 in range(5):
+        if first == 1:
+            for i2 in range(9):
+                if i2 == middle:
+                    x.append("*")
+                else:
+                    x.append(" ")
+            y.append(x)
+            first = 0
+        else:
+            for i2 in range(9):
+                if i2 == middle or i2 == middlenext or i2 == middleprev:
+                    x.append("*")
+                else:
+                    x.append(" ")
+            y.append(x)
+
+        middleprev = middle - 1
+        middlenext = middle + 1
+        
+        x = []
 
 
 def lp(some_kind_of_list, exercise_name):
