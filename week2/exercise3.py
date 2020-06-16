@@ -282,30 +282,63 @@ def loops_7():
     """
     x = []
     y = []
-    first = 1
-    middle = int(9/2) + 1
+    first = 0
+    middle = int(9/2)
+    middleprev = middle - 1
+    middlenext = middle + 1
+    middleprev2 = middleprev - 1
+    middlenext2 = middlenext + 1
+    middleprev3 = middleprev2 - 1
+    middlenext3 = middlenext2 + 1
+    middleprev4 = middleprev3 - 1
+    middlenext4 = middlenext3 + 1
+
     for i1 in range(5):
-        if first == 1:
+        if first == 0:
             for i2 in range(9):
                 if i2 == middle:
                     x.append("*")
                 else:
                     x.append(" ")
             y.append(x)
-            first = 0
-        else:
+            first = 1
+        elif first == 1:
             for i2 in range(9):
                 if i2 == middle or i2 == middlenext or i2 == middleprev:
                     x.append("*")
                 else:
                     x.append(" ")
             y.append(x)
+            first = 2
+        elif first == 2:
+            for i2 in range(9):
+                if i2 == middle or i2 == middlenext or i2 == middleprev or i2 == middlenext2 or i2 == middleprev2:
+                    x.append("*")
+                else:
+                    x.append(" ")
+            y.append(x)
+            first = 3
+        elif first == 3:
+            for i2 in range(9):
+                if i2 == middle or i2 == middlenext or i2 == middleprev or i2 == middlenext2 or i2 == middleprev2 or i2 == middleprev3 or i2 == middlenext3:
+                    x.append("*")
+                else:
+                    x.append(" ")
+            y.append(x)
+            first = 4
+        else:
+            for i2 in range(9):
+                if i2 == middle or i2 == middlenext or i2 == middleprev or i2 == middlenext2 or i2 == middleprev2 or i2 == middleprev3 or i2 == middlenext3 or i2 == middleprev4 or i2 == middlenext4:
+                    x.append("*")
+                else:
+                    x.append(" ")
+            y.append(x)
+            first = 5
 
-        middleprev = middle - 1
-        middlenext = middle + 1
+        
         
         x = []
-
+    return y
 
 def lp(some_kind_of_list, exercise_name):
     """Help to see what's going on.
