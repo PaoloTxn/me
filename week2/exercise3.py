@@ -64,17 +64,16 @@ def loops_1a():
 
     #return xlist[i]
 
-    i = 0    
-    list2 = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"]    
+    list2 = []
 
-    for i in range(len(list2)):
-        list2[i] = '*'
+    for i in range(10):
+        list2.append("*")
 
-
+    return list2
     #for i in range(len(list2)):
     #    return (list2[i])
 
-    return list2
+    
 
 def loops_1c(number_of_items=5, symbol="#"):
     """Respond to variables.
@@ -114,9 +113,17 @@ def loops_2():
             ['*', '*', '*', '*', '*', '*', '*', '*', '*', '*'],
           ]
     """
-    hello = "hello";"hello"
-    print hello
+    list3 = []
 
+    for i in range(10):
+        list3.append('*')
+
+    loops_list = []
+
+    for x in range(10):
+        loops_list.append(list3)
+
+    return loops_list
 
 def loops_3():
     """Make a rising block of numbers.
@@ -139,7 +146,17 @@ def loops_3():
     TIP: notice that this needs to to return strings of numbers,
          so call str(number) to cast.
     """
-    return None
+    list3 = []
+    loops_list = []
+    for num in range(10):
+        for i in range(10):
+            list3.append(str(num))
+        loops_list.append(list3)
+        list3 = []
+
+    return loops_list
+    
+    
 
 
 def loops_4():
@@ -159,7 +176,17 @@ def loops_4():
       ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
     ]
     """
-    return None
+
+    
+    list3 = []
+    loops_list = []
+    for num in range(10):
+        list3.append(str(num))
+    for x in range(10):
+        loops_list.append(list3)
+        
+
+    return loops_list
 
 
 def loops_5():
