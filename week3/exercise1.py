@@ -94,11 +94,21 @@ def not_number_rejector(message):
     (e.g. "cow", "six", "8!") then throw it out and ask for an actual number.
     When you do get a number, return it.
     """
-    import random
 
-    randomnum = 
+    isnumber = 0
+    while isnumber == 0:
+        num = input("Return a number: ")
+        if num.isdigit:
+            isnumber = 1
+            return num
+        else:
+            print(message) 
 
-    return None
+    return message
+
+    
+
+
 
 
 def super_asker(low, high):
@@ -109,7 +119,41 @@ def super_asker(low, high):
     Try to call at least one of the other functions to minimise the
     amount of code.
     """
-    return None
+    import random
+
+    randomnum = random.randint(low, high)
+    randomnumfirst = random.randint(low, high)
+    userguess = ""
+    guesses = 0
+    notguessed = 1
+    isnumber = 0
+
+    print("Guess a number")
+    while notguessed == 1:
+        while isnumber == 0:
+            num = input("Return a number: ")
+            if num.isdigit == True:
+                num = int(num)
+                isnumber = 1
+                if randomnum > num:
+                    print("Higher")
+                    guesses = guesses + 1
+                    randomnumfirst = randomnumfirst + 1
+                elif randomnum < num:
+                    print("Lower")
+                    guesses = guesses + 1
+                    randomnumfirst = randomnumfirst - 1
+                elif randomnum == num:
+                    print("Correct")
+                    notguessed = 0
+                return num
+            else:
+                print("message") 
+
+            
+
+        
+            
 
 
 if __name__ == "__main__":

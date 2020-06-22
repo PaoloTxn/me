@@ -1,4 +1,4 @@
-"""Week 3, Exercise 3.
+"""Week 3, Exercise 3
 
 Steps on the way to making your own guessing game.
 """
@@ -25,8 +25,35 @@ def advancedGuessingGame():
     Remember to think modular. Try to keep your functions small and single
     purpose if you can!
     """
+    
 
+    """Play a game with the user.
+
+    This is an example guessing game. It'll test as an example too.
+    """
+    print("\nWelcome to the guessing game!")
+    upperBound = input("Enter an upper bound: ")
+    print("OK then, a number between 0 and {} ?".format(upperBound))
+    upperBound = int(upperBound)
+    lowerBound = input("Now choose a lower bound: ")
+    lowerBound = int(lowerBound)
+
+    actualNumber = random.randint(lowerBound, upperBound)
+
+    guessed = False
+
+    while not guessed:
+        guessedNumber = int(input("Guess a number: "))
+        print("You guessed {},".format(guessedNumber),)
+        if guessedNumber == actualNumber:
+            print("You got it!! It was {}".format(actualNumber))
+            guessed = True
+        elif guessedNumber < actualNumber:
+            print("Too small, try again :'(")
+        else:
+            print("Too big, try again :'(")
     return "You got it!"
+
     # the tests are looking for the exact string "You got it!". Don't modify that!
 
 
