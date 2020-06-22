@@ -60,24 +60,30 @@ def stubborn_asker(low, high):
     import random
 
     randomnum = random.randint(low, high)
-    randomnumfirst = random.randint(low, high)
-    guesses = 0
+    #randomnumfirst = random.randint(low, high)
     notguessed = 1
 
-    
     while notguessed == 1:
-        if randomnum > randomnumfirst:
-            print("Higher")
-            guesses = guesses + 1
-            randomnumfirst = randomnumfirst + 1
-        elif randomnum < randomnumfirst:
-            print("Lower")
-            guesses = guesses + 1
-            randomnumfirst = randomnumfirst - 1
-        elif randomnum == randomnumfirst:
-            print("Correct")
-            return randomnumfirst
+        num = input("Input number: ")
+        if num < high and num > low:
+            return num
             notguessed = 0
+
+
+    
+    # while notguessed == 1:
+    #     if randomnum > randomnumfirst:
+    #         print("Higher")
+    #         guesses = guesses + 1
+    #         randomnumfirst = randomnumfirst + 1
+    #     elif randomnum < randomnumfirst:
+    #         print("Lower")
+    #         guesses = guesses + 1
+    #         randomnumfirst = randomnumfirst - 1
+    #     elif randomnum == randomnumfirst:
+    #         print("Correct")
+    #         return randomnumfirst
+    #         notguessed = 0
             
 
         
@@ -94,17 +100,29 @@ def not_number_rejector(message):
     (e.g. "cow", "six", "8!") then throw it out and ask for an actual number.
     When you do get a number, return it.
     """
-
     isnumber = 0
+    
     while isnumber == 0:
         num = input("Return a number: ")
-        if num.isdigit:
-            isnumber = 1
+        try:
+            val = int(num)
             return num
-        else:
-            print(message) 
+        except:
+            print("This is not a valid number")
 
-    return message
+
+
+
+    # isnumber = 0
+    # while isnumber == 0:
+    #     num = input("Return a number: ")
+    #     if num.isnumeric() == False:
+    #         print("This isn't an integer")
+            
+    #     else:
+    #         isnumber = 1
+    #         return num
+
 
     
 
@@ -121,34 +139,49 @@ def super_asker(low, high):
     """
     import random
 
-    randomnum = random.randint(low, high)
-    randomnumfirst = random.randint(low, high)
-    userguess = ""
-    guesses = 0
-    notguessed = 1
     isnumber = 0
-
-    print("Guess a number")
-    while notguessed == 1:
-        while isnumber == 0:
-            num = input("Return a number: ")
-            if num.isdigit == True:
-                num = int(num)
-                isnumber = 1
-                if randomnum > num:
-                    print("Higher")
-                    guesses = guesses + 1
-                    randomnumfirst = randomnumfirst + 1
-                elif randomnum < num:
-                    print("Lower")
-                    guesses = guesses + 1
-                    randomnumfirst = randomnumfirst - 1
-                elif randomnum == num:
-                    print("Correct")
-                    notguessed = 0
+    
+    while isnumber == 0:
+        num = input("Return a number: ")
+        try:
+            val = int(num)
+            if num < high and num > low:
                 return num
-            else:
-                print("message") 
+                notguessed = 0
+        except:
+            print("This is not a valid number")
+
+
+
+
+    # randomnum = random.randint(low, high)
+    # randomnumfirst = random.randint(low, high)
+    # userguess = ""
+    # guesses = 0
+    # notguessed = 1
+    # isnumber = 0
+
+    # print("Guess a number")
+    # while notguessed == 1:
+    #     while isnumber == 0:
+    #         num = input("Return a number: ")
+    #         if num.isnumeric() == True:
+    #             num = int(num)
+    #             isnumber = 1
+    #             if randomnum > num:
+    #                 print("Higher")
+    #                 guesses = guesses + 1
+    #                 randomnumfirst = randomnumfirst + 1
+    #             elif randomnum < num:
+    #                 print("Lower")
+    #                 guesses = guesses + 1
+    #                 randomnumfirst = randomnumfirst - 1
+    #             elif randomnum == num:
+    #                 print("Correct")
+    #                 notguessed = 0
+    #             return num
+    #         else:
+    #             print("message") 
 
             
 

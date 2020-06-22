@@ -33,10 +33,11 @@ def advancedGuessingGame():
     """
     print("\nWelcome to the guessing game!")
     upperBound = input("Enter an upper bound: ")
-    print("OK then, a number between 0 and {} ?".format(upperBound))
+    
     upperBound = int(upperBound)
     lowerBound = input("Now choose a lower bound: ")
     lowerBound = int(lowerBound)
+    print("OK then, a number between {}".format(lowerBound) + " and {} ?".format(upperBound))
 
     actualNumber = random.randint(lowerBound, upperBound)
 
