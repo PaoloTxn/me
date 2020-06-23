@@ -30,20 +30,25 @@ def advancedGuessingGame():
     
     print("\nWelcome to the guessing game!")
 
-    while True:   
+    while isnumber == 0:   
       upperBound = get_good_number("Enter an upper bound: ")
       lowerBound = get_good_number("Enter an lower bound: ")
-      if upperBound <= 5:
-        print("lower or equal to 5")
+      if upperBound < 1:
+        print("lower or equal to 1")
       elif lowerBound >= upperBound:
-        print("Range needs to be lower")
+        print(f"{lowerBound} {upperBound} Range needs to be lower")
+        x = lowerBound
+        lowerBound = upperBound
+        upperBound = x
+        isnumber = 1
       else:
-        return upperBound, lowerBound
+        isnumber = 1
 
     print(f"OK then, a number between {lowerBound}" + f" and {upperBound} ?")
     actualNumber = random.randint(lowerBound, upperBound)
+    print(f"actualnumber {actualNumber}")
 
-    while isnumber == 0:
+    while isnumber == 1:
       guessedNumber = input("Now guess a number between the range!: ")
       try:
         guessedNumber = int(guessedNumber)
@@ -54,7 +59,7 @@ def advancedGuessingGame():
           if guessedNumber == actualNumber:
             print("You got it!! It was {}".format(actualNumber))
             return "You got it!"
-            isnumber = 1
+            isnumber = 0
           elif guessedNumber < actualNumber:
             print("Too small, try again :'(")
           else:
@@ -70,7 +75,7 @@ def get_good_number(message):
       inputnum = int(inputnum)
       return inputnum
     except:
-      print("This is not a valid number")
+      print(f"{inputnum} This is not a valid number")
   
     
 
