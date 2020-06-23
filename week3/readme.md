@@ -7,3 +7,9 @@ old format:
 
 new format:
 (f"OK then, a number between {lowerBound}" + f" and {upperBound} ?"
+
+if upperBound <= 5:
+        print("This number is lower or equal to 5!")
+
+if lowerBound >= upperBound:
+    print("Range needs to be lower!")
