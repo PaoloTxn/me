@@ -33,10 +33,46 @@ def get_some_details():
          dictionary, you'll need integer indeces for lists, and named keys for
          dictionaries.
     """
-    json_data = open(LOCAL + "/lazyduck.json").read()
+    
 
-    data = json.loads(json_data)
-    return {"lastName": None, "password": None, "postcodePlusID": None}
+    
+    #last name + password + number for postcode, id value
+    try:
+        json_data = open(LOCAL + "/lazyduck.json").read()
+        data = json.loads(json_data)
+        data_dict = []
+
+
+        print(data['results'][0])
+        print(data['results'][0]['name']['last'])
+
+        lastName = data['results'][0]['name']['last']
+        password = data['results'][0]['login']['password']
+        postcode = data['results'][0]['location']['postcode']
+        idvalue = data['results'][0]['id']['value']
+        
+        print(lastName)
+        print(password)
+        print(postcode)
+        print(idvalue)
+
+        postcodePlusID = int(postcode) + int(idvalue)
+        print(postcodePlusID)
+
+
+        # for i in data['results']: 
+        #     print("Name:", i['name']['last']) 
+        #     print("Website:", i['location']) 
+        #     print("From:", i['postcode']) 
+        #     print()        
+
+        return {"lastName": lastName, "password": password, "postcodePlusID": postcodePlusID}
+
+        json_data.close()
+    except:
+        None
+
+    
 
 
 def wordy_pyramid():
@@ -74,7 +110,40 @@ def wordy_pyramid():
     ]
     TIP: to add an argument to a URL, use: ?argName=argVal e.g. &minLength=
     """
-    pass
+    import requests as req
+
+    wordcount = 1
+    count = 0
+    word_list = []
+
+    # resp = req.get("https://us-central1-waldenpondpress.cloudfunctions.net/give_me_a_word?wordlength=5")
+    # print(resp.text)
+
+    while count != 10:
+        count = count + 1
+        wordcount = wordcount + 2  
+        if wordcount == 21:
+            wordcount = 20
+            resp = req.get(f"https://us-central1-waldenpondpress.cloudfunctions.net/give_me_a_word?wordlength={wordcount}")
+            word_list.append(str(resp.text))
+            print(wordcount)
+        else:
+            resp = req.get(f"https://us-central1-waldenpondpress.cloudfunctions.net/give_me_a_word?wordlength={wordcount}")
+            word_list.append(str(resp.text))
+            print(wordcount)
+        
+
+    while count != 2:
+        count = count - 1
+        wordcount = wordcount - 2
+        resp = req.get(f"https://us-central1-waldenpondpress.cloudfunctions.net/give_me_a_word?wordlength={wordcount}")
+        word_list.append(str(resp.text))
+        print(wordcount)
+
+    return word_list
+        
+    
+
 
 
 def pokedex(low=1, high=5):
