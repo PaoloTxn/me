@@ -177,12 +177,14 @@ def tell_me_about_this_right_triangle(facts_dictionary):
 
 
 def triangle_master(base, height, return_diagram=False, return_dictionary=False):
+    facts = get_triangle_facts(base, height)
+    right = tell_me_about_this_right_triangle(facts)
     if return_diagram and return_dictionary:
-        return None
+        return {"diagram": right,"facts": facts}
     elif return_diagram:
-        return None
+        return right
     elif return_dictionary:
-        return None
+        return facts
     else:
         print("You're an odd one, you don't want anything!")
 
@@ -218,8 +220,16 @@ def wordy_pyramid(api_key):
 
 
 def get_a_word_of_length_n(length):
-    pass
-
+    import requests
+    
+    r = requests.get(f"https://us-central1-waldenpondpress.cloudfunctions.net/give_me_a_word?wordlength={length}")
+    
+    try:
+        message = r.text
+        return message
+    except:
+        print("Error")
+        return None
 
 def list_of_words_with_lengths(list_of_lengths):
     pass
