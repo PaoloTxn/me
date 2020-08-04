@@ -1,6 +1,7 @@
 # -*- coding: UTF-8 -*-
 
 import math
+import requests
 
 """Refactoring.
 
@@ -189,52 +190,39 @@ def triangle_master(base, height, return_diagram=False, return_dictionary=False)
         print("You're an odd one, you don't want anything!")
 
 
-def wordy_pyramid(api_key):
-    import requests
-
-    baseURL = (
-        "http://api.wordnik.com/v4/words.json/randomWords?"
-        "api_key={api_key}"
-        "&minLength={length}"
-        "&maxLength={length}"
-        "&limit=1"
-    )
-    pyramid_list = []
-    for i in range(3, 21, 2):
-        url = baseURL.format(api_key="", length=i)
-        r = requests.get(url)
-        if r.status_code is 200:
-            message = r.json()[0]["word"]
-            pyramid_list.append(message)
-        else:
-            print("failed a request", r.status_code, i)
-    for i in range(20, 3, -2):
-        url = baseURL.format(api_key="", length=i)
-        r = requests.get(url)
-        if r.status_code is 200:
-            message = r.json()[0]["word"]
-            pyramid_list.append(message)
-        else:
-            print("failed a request", r.status_code, i)
-    return pyramid_list
+def wordy_pyramid():
+    p = list(range(3, 21, 2))
+    p.extend(list(range(20, 3, -2)))
+    word_length = p
+    words = list_of_words_with_lengths(word_length)
+    return words
 
 
 def get_a_word_of_length_n(length):
     import requests
-    
-    r = requests.get(f"https://us-central1-waldenpondpress.cloudfunctions.net/give_me_a_word?wordlength={length}")
+    baseURL = (f"https://us-central1-waldenpondpress.cloudfunctions.net/give_me_a_word?wordlength={length}")
+    url = baseURL.format(length)
+    r = requests.get(url)
     
     try:
-        message = r.text
-        return message
+        if r.status_code is 200:
+            message = r.text
+            return message
     except:
-        print("Error")
-        return None
+        print("failed a request", r.status_code)
 
 def list_of_words_with_lengths(list_of_lengths):
-    pass
+    import requests
+    p_list = []
+    for i in list_of_lengths:
+        p_list.append(get_a_word_of_length_n(i))
+
+    return p_list
 
 
 if __name__ == "__main__":
-    # do_bunch_of_bad_things()
-    wordy_pyramid("a2a73e7b926c924fad7001ca3111acd55af2ffabf50eb4ae5")
+    countdown("We're about to start", 9, 1, "we finished, wheeeee!")
+    triangle_master(3, 5)
+    pyramid = wordy_pyramid()
+    for word in pyramid:
+        print(word)
